@@ -74,7 +74,9 @@ if __name__ == "__main__":
     # [('DP1-1', 'DP', '-1', '3840x2160')]
     matches = screen_rex.findall(backtick("xrandr"))
     assert len(matches) > 0, "no primary screen found, xrandr regex wrong?"
-    assert len(matches) == 1, "found multiple primary screens, xrandr regex wrong?"
+    assert (
+        len(matches) == 1
+    ), "found multiple primary screens, xrandr regex wrong?"
     screen_name = matches[0][0]
     # w0,h0=0,0 is an assumption, ignore actual position
     screen_frame = Frame(0, 0, *map(int, matches[0][-1].split("x")))
@@ -103,11 +105,13 @@ if __name__ == "__main__":
     system(f"xsetwacom set '{devs['stylus']}' Area {stylus_frame_new.wacom}")
     assert stylus_frame_new == get_stylus_frame(devs)
 
+    # ------------------------------------------------------------------------
+    # Custom settings for Intuos Pro S (2020 model). Comment out if needed.
+    # ------------------------------------------------------------------------
+
     # decrease drawing lag by less smoothing (moving avg window size)
     system(f"xsetwacom set '{devs['stylus']}' RawSample 2")
 
-    # works for our Intuos Pro S (2020 model)
-    #
     # top left button: Escape
     system(f"xsetwacom set '{devs['pad']}' Button 1 key 'esc'")
     # second from top left, middle of first 3 buttons: CTRL-Z (useful for undo

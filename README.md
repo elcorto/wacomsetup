@@ -6,6 +6,8 @@ About
 * Scale and crop Wacom active area to screen aspect ratio.
 * For now only stylus area aspect ratio (e.g. 16/10 = 1.6) `<=` screen aspect
   ratio (e.g. 16/9 = 1.777...) supported.
+* **We hard-coded some custom settting for our Wacom model (end of the script).
+  Deactivate if needed. See also [#1](https://github.com/elcorto/wacomsetup/issues/1)**
 
 Requirements
 ------------
