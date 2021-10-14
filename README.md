@@ -6,8 +6,20 @@ About
 * Scale and crop Wacom active area to screen aspect ratio.
 * For now only stylus area aspect ratio (e.g. 16/10 = 1.6) `<=` screen aspect
   ratio (e.g. 16/9 = 1.777...) supported.
-* **We hard-coded some custom settting for our Wacom model (end of the script).
+* **We hard-coded some custom settings for our Wacom model (end of the script).
   Deactivate if needed. See also [#1](https://github.com/elcorto/wacomsetup/issues/1)**
+
+Usage
+-----
+
+Connect the device, then just run `wacomsetup`.
+
+```sh
+$ /path/to/wacomsetup/wacomsetup
+map to screen: DP-1-1
+screen: 0 0 3840 2160 | aspect=1.778
+stylus: 0 0 31920 19950 | aspect=1.6 -> 0 0 31920 17955 | aspect=1.778
+```
 
 Requirements
 ------------
@@ -155,3 +167,11 @@ we find
 ```
 
 but that's wrong. On our device `B=1,C=2,...`. Bummer.
+
+
+Drawing apps
+------------
+
+We mostly use the excellent [`xournalpp`](https://github.com/xournalpp/xournalpp)
+or even the older [`xournal`](http://xournal.sourceforge.net) which still works
+great. Both available in Debian repos as well.
