@@ -66,13 +66,14 @@ if __name__ == "__main__":
         print("no devices found")
         sys.exit(0)
 
-    # xrandr: select primary screen, there can be only one .. right? :)
+    # xrandr: select primary screen and/or the only one connected
     #
     # If only one screen is connected (in which case we still do the aspect
     # correction), xrandr sometimes prints "connected primary" and sometimes
-    # only "connected". First try with "primary", then fall back to the one
-    # connected screen.
-    screen_rex_templ_txt = r"^((DP|HDMI|eDP)[-]*[0-9]*(-[0-9]+)*).*\s+connected{prim}.*?([0-9]+x[0-9]+)\+[0-9]+\+[0-9]+.+$"
+    # only "connected". This is because a screen can be defined a primary or
+    # not, even if it is the only one connected. First try with "primary", then
+    # fall back to the one connected screen.
+    screen_rex_templ_txt = r"^((DP|DisplayPort|HDMI|eDP)[-]*[0-9]*(-[0-9]+)*).*\s+connected{prim}.*?([0-9]+x[0-9]+)\+[0-9]+\+[0-9]+.+$"
     screen_rexs = [
         re.compile(screen_rex_templ_txt.format(prim=pp), re.M)
         for pp in (" primary", "")
