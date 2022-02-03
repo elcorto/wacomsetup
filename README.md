@@ -3,7 +3,7 @@ About
 
 * Map Wacom tablet to primary screen (`xrandr | grep primary, xsetwacom ...
   MapToOutput ...`)
-* Scale and crop Wacom active area to screen aspect ratio.
+* Adjust Wacom active area to screen aspect ratio.
 * For now only stylus area aspect ratio (e.g. 16/10 = 1.6) `<=` screen aspect
   ratio (e.g. 16/9 = 1.777...) supported.
 * **We hard-coded some custom settings for our Wacom model (end of the script).
@@ -86,11 +86,11 @@ of using absolute coordinates. Should work in any kind of monitor setup
 (untested).
 
 
-Scaling mode
-------------
+Adjust aspect ratio
+-------------------
 
 Currently we only support stylus area aspect ratio (e.g. 16/10 = 1.6) `<=`
-screen aspect ratio (e.g. 16/9 = 1.777...). In this case we scale the stylus
+screen aspect ratio (e.g. 16/9 = 1.777...). In this case we adjust the stylus
 active area by removing some pixels at the bottom of the active area where we
 don't draw often anyway:
 
